@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <button><a href="/new"> New Blog </a></button>
+    <div >
+        <% blog.forEach(ele=>{ %>
+           <div style="margin: 30px;">
+        <div><%= ele.title %></div>
+       <div><%= ele.createdAt %></div>
+       <div> <%= ele.desc %></div>
+       <div>
+        <button><a href="read/<%= ele._id %>">Read More</a></button>
+        <button><a href="delete/<%= ele._id %>">Delete</a></button>
+
+       </div>
+       </div>
+       <% } )%>
+    </div>
+</body>
+</html>
