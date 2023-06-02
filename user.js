@@ -12,7 +12,7 @@ route.get("/",async (req,res)=>{
 route.get("/new",(req,res)=>{
     res.render("new");
 })
-route.get("/delete/:id",async (req,res)=>{
+route.delete("/delete/:id",async (req,res)=>{
     let id = req.params._id
     await Blog.deleteOne({id});
     res.redirect("/");

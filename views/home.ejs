@@ -16,8 +16,10 @@
        <div> <%= ele.desc %></div>
        <div>
         <button><a href="read/<%= ele._id %>">Read More</a></button>
-        <button><a href="delete/<%= ele._id %>">Delete</a></button>
-
+        <!-- <button><a href="delete/<%= ele._id %>">Delete</a></button> -->
+         <form action="delete/<%= ele._id %>?_method=DELETE" method="post">
+            <button type="submit">Delete</button>
+         </form>
        </div>
        </div>
        <% } )%>
