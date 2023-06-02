@@ -10,7 +10,10 @@
     <h2><%= blog.title %></h2>
 
     <button><a href="/">All Blog</a></button>
-    <button><a href="/delete/<%= blog._id %>">delete</a></button>
+ 
+ <form action="delete/<%= blog._id %>?_method=DELETE" method="post">
+    <button type="submit">Delete</button>
+ </form>
     
     <div>
         <%= blog.createdAt %>

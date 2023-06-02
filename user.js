@@ -12,12 +12,16 @@ route.get("/",async (req,res)=>{
 route.get("/new",(req,res)=>{
     res.render("new");
 })
-route.delete("/delete/:id",async (req,res)=>{
+async function del(req,res){
     let id = req.params._id
     await Blog.deleteOne({id});
     res.redirect("/");
-})
+}
+route.delete("/delete/:id",del)
+route.delete("/read/delete/:id",del)
 route.post("/new",async (req,res)=>{
+    console.log(req.body)
+   try {
     const {title,desc}=req.body;
     let user=await Blog.create({
         title,
@@ -26,10 +30,16 @@ route.post("/new",async (req,res)=>{
     });
     console.log(user);
     res.redirect("/");
+    
+   } catch (error) {
+    console.log(error);
+   }
 })
-route.get("/read/:id",async (req,res)=>{
-    let id=req.params._id;
-    let user=await Blog.findOne({id});
+route.get("/read/:slug",async (req,res)=>{
+    let id=req.params.slug;
+    console.log(id);
+    let user=await Blog.findOne({slug:id});
+    console.log(user);
     res.render("detail",{blog:user});
 })
 
